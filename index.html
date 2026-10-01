@@ -111,6 +111,7 @@ body{margin:0;font-family:var(--f-body);padding-inline:16px;padding-block:16px 3
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
 /* start cover */
+[hidden]{display:none!important}
 #cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:rgba(18,30,52,.55);z-index:5;border:0;cursor:pointer;color:#fff;font-family:var(--f-display)}
 #cover .big{width:128px;height:128px;border-radius:50%;background:var(--amber);display:grid;place-items:center;box-shadow:0 10px 0 #b9790b,0 18px 40px rgba(0,0,0,.35);transition:transform .15s}
 #cover:hover .big,#cover:focus-visible .big{transform:scale(1.06)}
