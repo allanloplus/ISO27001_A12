@@ -1,0 +1,5 @@
+dist/
+output/*.video.mp4
+output/*.audio.m4a
+output/*.filter.txt
+__pycache__/
