@@ -1,7 +1,8 @@
 # ISO 27001:2022 資訊安全事件管理｜動畫教學簡報
 
 以 ISO/IEC 27001:2022 附錄A 控制屬性「運作流程」中的 **Information security event management（資訊安全事件管理）** 為主題，
-由 **Q 版 Allan Lo 講師**（台灣男聲）主講、**助教阿拉蕾**串場的動畫課，約 13.5 分鐘、17 個場景。
+由 **Q 版 Allan Lo 講師**（台灣男聲）主講、**AI 小助手阿拉蕾**（台灣女聲）串場的動畫課，約 13.5 分鐘、17 個場景。
+角色造型取自 `assets/source/` 的兩張角色設定圖，每位角色 8 種表情會依對白情緒切換，Allan 老師說話時會開口閉口。
 
 | 單元 | 內容 |
 |---|---|
@@ -23,6 +24,8 @@
 | `docs/逐字稿.md` | 每頁畫面重點與完整對白，可做講義或備課稿 |
 | `src/scenes.js` | **課程腳本**：每頁的白板內容與對白（改這裡即可改課程） |
 | `src/player.html` | 舞台、角色（SVG）、動畫與播放邏輯 |
+| `assets/source/` | 講師與助教的角色設定圖（原始素材） |
+| `assets/chars/` | 由設定圖裁切的表情頭像（`tools/crop_characters.py` 產生） |
 | `audio/` | 每句對白的語音檔（自動產生） |
 | `tools/` | 建置工具（語音、頁面、影片、逐字稿） |
 
@@ -30,6 +33,7 @@
 
 ```bash
 pip install edge-tts                                   # 一次即可
+python3 tools/crop_characters.py                       # 換角色設定圖後重新裁切表情頭像
 python3 tools/build_audio.py                           # 只會重新產生有改動的句子
 python3 tools/build_page.py                            # 產生 index.html
 node tools/build_script_md.js                          # 產生 docs/逐字稿.md
@@ -38,11 +42,12 @@ NODE_PATH=$(npm root -g) node tools/record_video.js    # 錄製 MP4（需 playwr
 
 - 語音：Microsoft Edge 神經語音（台灣華語）— Allan 老師 `zh-TW-YunJheNeural`、阿拉蕾 `zh-TW-HsiaoYuNeural`（調高音調）。
   發音不理想時，在對白加上 `tts` 欄位指定朗讀文字（例如條文編號寫成「五點二四」）。
-- 對白欄位 `act` 控制角色動作：`talk`、`point`（指白板）、`jump`、`think`、`shock`、`happy`、`wave`；
+- 對白欄位 `act` 控制角色表情與動作：`talk`、`point`、`think`、`confused`、`shock`、`sad`、`happy`、`wink`、`jump`、`wave`
+  （對照表在 `src/player.html` 的 `FACES`）；
   `step` 控制白板上 `data-step` 元素的出場順序。
 
 ## 使用提醒
 
 - 法規時限（資通安全管理法、個資法）以課程製作時之規定為例，授課前請依最新法規確認。
 - 案例為綜合多家企業情境改編，非特定組織之真實事件。
-- 「阿拉蕾」為鳥山明《怪博士與機器娃娃》之角色；本課程助教為致敬風格之原創 Q 版繪製。若用於商業授課或公開發行，請自行評估角色權利，必要時改名或調整造型。
+- 「阿拉蕾」之名與鳥山明《怪博士與機器娃娃》角色相同；本課程助教造型為使用者提供之原創設定圖。若用於商業授課或公開發行，建議評估名稱使用之權利。
